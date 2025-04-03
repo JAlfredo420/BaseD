@@ -1,6 +1,6 @@
 # Configuración de Servidores y Gestión de Bases de Datos
 
-## Configuración de un Dominio en Hostinger
+## ✍️Configuración de un Dominio en Hostinger
 
 Para vincular un dominio personalizado con el panel de control Hestia en Hostinger, sigue estos pasos:
 
@@ -11,7 +11,7 @@ Para vincular un dominio personalizado con el panel de control Hestia en Hosting
 3. Introduce el nombre del dominio deseado (ejemplo: tusitio.com).
 4. Finaliza el pago y espera la activación del dominio (este proceso puede tardar hasta 24 horas).
 
-Imagen 1: Proceso de registro de dominio
+Imagen 1: Proceso de registro de dominio ![Scared](BD/p1.png)
 
 ### 2️⃣ Modificación de los Servidores de Nombres (DNS)
 
@@ -26,7 +26,8 @@ Imagen 1: Proceso de registro de dominio
 
 4. Guarda los ajustes y espera la propagación de DNS (este proceso puede tardar varias horas).
 
-Imagen 2: Modificación de DNS en Hostinger
+Imagen 2: Modificación de DNS en Hostinger ![Scared](BD/p2.png)
+
 
 ## 3️⃣ Asociar el Dominio en Hestia Control Panel
 
@@ -37,22 +38,14 @@ Para reemplazar localhost por tu dominio en Hestia, sigue estos pasos:
    ```
    ssh root@<IP_DEL_SERVIDOR>
    ```
-
-Imagen 3: Instalación de Hestia mediante línea de comandos
-
-## Instalación de Hestia
+## 📌 Hestia Control Panel (VPS) 
+En Hestia, debemos dar clic en los siguientes campos necesarios para el levantamiento de nuestra página.![Scared](BD/p3.png)
 
 👾[Hestia install](https://hestiacp.com/install)
 
 Para configurar Hestia en tu servidor, ejecuta el siguiente comando en la terminal:
-```
-bash
-cd /usr/local/hestia/bin/
-v-change-sys-hostname tusitio.com
-v-add-letsencrypt-host
-```
-Imagen 4: Configuración de Hestia mediante terminal
 
+![Scared](BD/p4.png)
 ## Verificación de la Propagación del DNS
 
 Para confirmar que el dominio se ha propagado correctamente, utiliza la herramienta siguiente.
@@ -64,7 +57,8 @@ Para confirmar que el dominio se ha propagado correctamente, utiliza la herramie
 3. Selecciona el tipo de registro DNS (A, CNAME, MX, etc.).
 4. Pulsa en *Buscar* para verificar la propagación en servidores globales.
 
-Imagen 5: Verificación de propagación DNS
+Imagen 5: Verificación de propagación DNS ![Scared](BD/p5.png)
+
 
 ## Instalación de Apache y PHP en Oracle Cloud
 ♨️[Te puedes ayudar de la siguiente paguina](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/apache-on-ubuntu/01oci-ubuntu-apache-summary.htm#set-up-apache-php)
@@ -82,32 +76,29 @@ bash
 ssh -i <tu-clave-privada.key> ubuntu@<IP_DE_LA_INSTANCIA>
 ```
 
-Imagen 6: Acceso SSH a la instancia
+## Instalación de Apache y PHP
 
-### Instalación de Apache y PHP
-
-Actualiza los paquetes e instala Apache con:
+#### 🪼Actualiza los paquetes e instalacion Apache con: 
 ```
 bash
 sudo apt update
 sudo apt -y install apache2
 ```
 
-Inicia Apache y revisa su estado con:
+### Inicia Apache y revisa su estado con:
 ```
 bash
 sudo systemctl start apache2
 sudo systemctl enable apache2
 ```
 
-Configura el firewall para permitir tráfico HTTP:
+### Configura el firewall para permitir tráfico HTTP:
 ```
 bash
 sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
 sudo netfilter-persistent save
 ```
 
-Imagen 7: Instalación de Apache y PHP
 
 ## Comprobación del Servidor
 
@@ -123,13 +114,14 @@ phpinfo();
 
 Guarda este archivo en /var/www/html/ y ábrelo desde el navegador.
 
-Imagen 8: Verificación de Apache con PHP
+Imagen 8: Verificación de Apache con PHP ![Scared](BD/apache.png)
 
 ## Pasos para Configurar HTTPS en HestiaCP
 ### 1️⃣ Acceder a HestiaCP
-### Ve a https://<"IP">:8083/ e inicia sesión como admin.
+* Ve a https://<"IP">:8083/ e inicia sesión como admin.
 
 * 2️⃣ Agregar un Dominio a HestiaCP
+
 * En el panel de control, ve a Web > Añadir dominio.
 
 * Escribe tu dominio (Ejemplo: midominio.com).
@@ -147,3 +139,4 @@ v-add-web-domain-ssl "usuario de hestia" midominio.com
 v-add-letsencrypt-domain "usuario de hestia" midominio.com
 ```
 ### Buscador de Paguina usando HTTPS
+![Scared](BD/pag.png)
